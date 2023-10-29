@@ -133,6 +133,60 @@ def main_win3():
     frame_img.config(background="#627296")
 
     
+    img1 = ImageTk.PhotoImage(file=f'C:\\Users\\PRANALI PATIL\\Documents\\Music_Player\\Images\\3.jpg')
+    img2 = ImageTk.PhotoImage(file=f'C:\\Users\\PRANALI PATIL\\Documents\\Music_Player\\Images\\2.jpg')
+    img3 = ImageTk.PhotoImage(file=f'C:\\Users\\PRANALI PATIL\\Documents\\Music_Player\\Images\\3.jpg')
+    img = Label(image=img1,bg="black",height=480, width=875)
+    img.place(x=28,y=91)
+
+
+
+    down= Frame(root, relief=SUNKEN, height= 170, width=900)
+    down.place(x=18,y=603)
+    down.config(background="#627296")
+    down.bind('<Double-1>',move_to_win4)   
+
+
+    play=Image.open("C:\\Users\\PRANALI PATIL\\Documents\\Music_Player\\pause.png")
+    play = play.resize((80,80),Image.ANTIALIAS)
+    play =ImageTk.PhotoImage(play)
+    playbtn=Button(root,image = play,bd=0,command=pause_unpause)
+    playbtn.place(x=425,y=643)
+
+
+    next=Image.open("C:\\Users\\PRANALI PATIL\\Documents\\Music_Player\\next.png")
+    next = next.resize((80,80),Image.ANTIALIAS)
+    next = ImageTk.PhotoImage(next)
+    nextbtn=Button(root,image = next,bd=0,command=next_song)
+    nextbtn.place(x=553,y=643)
+
+    previous=Image.open("C:\\Users\\PRANALI PATIL\\Documents\\Music_Player\\previous.png")
+    previous = previous.resize((80,80),Image.ANTIALIAS)
+    previous = ImageTk.PhotoImage(previous)
+    previousbtn=Button(root,image = previous,bd=0,command= previous_song)
+    previousbtn.place(x=297,y=644)
+ 
+
+    loadbtn =Button(root,text="Load Music",bg="#4539ed",padx=8,pady=4,fg="white",font="Helvetica 13 bold",bd=0,command=add_song)
+    loadbtn.place(x=1373,y=101)
+
+    my_music = PhotoImage(file="C:\\Users\\PRANALI PATIL\\Documents\\Music_Player\\mlabel.png")
+    mlabel=Label(image = my_music,bd=0)
+    mlabel.place(x=954,y=87)
+
+
+    play_frame = Frame(root, height =600, width = 578, background ="#9ba4e8",bd=0)
+    play_frame.place(x=938,y=169)
+
+    scroll =Scrollbar(play_frame)
+    playlist = Listbox(play_frame, height = 25, width = 50, bg ="#000000", font = "Helvetica ",fg = "white",yscrollcommand=scroll.set)
+    scroll.config(command=playlist.yview)
+    scroll.pack(side=RIGHT,fill=Y)
+    playlist.pack(fill=BOTH)
+    playlist.bind('<Double-1>',play_song)   
+
+    
+    open_folder()
     root.mainloop()
     
 
